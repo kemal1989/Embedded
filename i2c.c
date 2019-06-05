@@ -100,3 +100,45 @@ else
 {
 	return(0)
 }
+
+/*********************** Function to receive a data byte and send ACKnowledge ***************************/
+
+uint8_t i2c_receiveData_ACK(void){
+	
+	TWCR =(1<<TWINT) | (1<<TWEA) | (1<<TWEN); //EA enable ack
+	
+	while (TWCR & (1<<TWINT) == 0)
+	{
+	}
+	
+	if ((TWSR & 0xF8) != MT_DATA_ACK
+	{
+		return(1)
+	}
+	
+	else{
+		
+		return(0) //data transmitted, ACK received
+
+return(TWDR) //Register gets read here
+
+
+}
+
+
+/*********************** Function to receive a data byte and send NOT Acnowledge ***************************/
+
+
+uint8_t i2c_receiveData_NACK(void){
+	
+	TWCR =(1<<TWINT) | (1<<TWEA) // EA not set, no ack received
+	
+	while (TWCR & (1<<TWINT) == 0)
+	{
+	}
+
+	return(TWDR) //Register gets read here
+
+}
+
+
